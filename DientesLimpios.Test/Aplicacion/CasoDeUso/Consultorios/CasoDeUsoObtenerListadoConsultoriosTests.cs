@@ -1,4 +1,4 @@
-﻿using DientesLimpios.Aplicacion.Consultorios.Consultas.ObtenerListadoConsultorios;
+﻿using DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Consultas.ObtenerListadoConsultorios;
 using DientesLimpios.Aplicacion.Contratos.Repositorios;
 using DientesLimpios.Dominio.Entidades;
 using NSubstitute;

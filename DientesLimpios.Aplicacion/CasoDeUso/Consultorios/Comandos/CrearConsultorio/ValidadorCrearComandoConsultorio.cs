@@ -1,0 +1,19 @@
+﻿using FluentValidation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Comandos.CrearConsultorio
+{
+    internal class ValidadorCrearComandoConsultorio: AbstractValidator<ComandoCrearConsultorios>
+    {
+        public ValidadorCrearComandoConsultorio()
+        {
+            RuleFor(p => p.Nombre)
+                .NotEmpty().WithMessage("El campo {PropertyName} es requerido")
+                .MaximumLength(150).WithMessage("La longitud del campo {PropertyName} debe ser menor o igual a {MaxLenght}");
+        }
+    }
+}

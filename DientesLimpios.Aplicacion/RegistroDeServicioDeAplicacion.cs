@@ -1,8 +1,8 @@
-﻿using DientesLimpios.Aplicacion.Consultorios.Comandos.ActualizarConsultorio;
-using DientesLimpios.Aplicacion.Consultorios.Comandos.BorrarConsultorio;
-using DientesLimpios.Aplicacion.Consultorios.Comandos.CrearConsultorio;
-using DientesLimpios.Aplicacion.Consultorios.Consultas.ObtenerConsultorio;
-using DientesLimpios.Aplicacion.Consultorios.Consultas.ObtenerListadoConsultorios;
+﻿using DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Comandos.ActualizarConsultorio;
+using DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Comandos.BorrarConsultorio;
+using DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Comandos.CrearConsultorio;
+using DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Consultas.ObtenerConsultorio;
+using DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Consultas.ObtenerListadoConsultorios;
 using DientesLimpios.Aplicacion.Utilidades.Mediador;
 using Microsoft.Extensions.DependencyInjection;
 using System;

@@ -14,17 +14,40 @@ namespace DientesLimpios.Dominio.Entidades
         public string Nombre { get; private set; } = null!;
         public Email Email { get; private set; } = null!;
 
+        private Paciente() { }
+
         public Paciente(string nombre, Email email)
         {
-            if (string.IsNullOrEmpty(nombre))
-                throw new ExcepcionDeReglaDeNegocio($"El {nameof(nombre)} es obligatorio");
-
-            if (email is null)
-                throw new ExcepcionDeReglaDeNegocio($"El {nameof(email)} es obligatorio");
+            AplicarReglasDeNegocioNombre(nombre);
+            AplicarReglasDeNegocioEmail(email);
 
             Id = Guid.CreateVersion7();
             Nombre = nombre;
             Email = email;
+        }
+
+        public void ActualizarNombre(string nombre)
+        {
+            AplicarReglasDeNegocioNombre(nombre);
+            Nombre = nombre;
+        }
+
+        public void ActualizarEmail(Email email)
+        {
+            AplicarReglasDeNegocioEmail(email);
+            Email = email;
+        }
+
+        private void AplicarReglasDeNegocioNombre(string nombre)
+        {
+            if (string.IsNullOrEmpty(nombre))
+                throw new ExcepcionDeReglaDeNegocio($"El {nameof(nombre)} es obligatorio");
+        }
+
+        private void AplicarReglasDeNegocioEmail(Email email)
+        {
+            if (email is null)
+                throw new ExcepcionDeReglaDeNegocio($"El {nameof(email)} es obligatorio");
         }
     }
 }

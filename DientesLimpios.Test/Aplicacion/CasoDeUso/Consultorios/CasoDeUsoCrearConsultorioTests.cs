@@ -1,6 +1,6 @@
 ﻿using DientesLimpios.Aplicacion.Contratos.Persistencia;
 using DientesLimpios.Aplicacion.Contratos.Repositorios;
-using DientesLimpios.Aplicacion.Consultorios.Comandos.CrearConsultorio;
+using DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Comandos.CrearConsultorio;
 using DientesLimpios.Aplicacion.Excepciones;
 using DientesLimpios.Dominio.Entidades;
 using FluentValidation;

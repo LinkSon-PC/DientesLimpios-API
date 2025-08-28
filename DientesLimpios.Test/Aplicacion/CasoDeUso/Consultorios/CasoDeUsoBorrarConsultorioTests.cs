@@ -1,5 +1,5 @@
-﻿using DientesLimpios.Aplicacion.Consultorios.Comandos.ActualizarConsultorio;
-using DientesLimpios.Aplicacion.Consultorios.Comandos.BorrarConsultorio;
+﻿using DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Comandos.BorrarConsultorio;
+using DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Comandos.ActualizarConsultorio;
 using DientesLimpios.Aplicacion.Contratos.Persistencia;
 using DientesLimpios.Aplicacion.Contratos.Repositorios;
 using DientesLimpios.Aplicacion.Excepciones;
