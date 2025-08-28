@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DientesLimpios.Aplicacion.Consultorios.Comandos.CrearConsultorio
+namespace DientesLimpios.Aplicacion.Consultorios.Comandos.ActualizarConsultorio
 {
-    internal class ValidadorCrearComandoConsultorio: AbstractValidator<ComandoCrearConsultorios>
+    public class ValidadorComandoActualizarConsultorio : AbstractValidator<ComandoActualizarConsultorio>
     {
-        public ValidadorCrearComandoConsultorio()
+        public ValidadorComandoActualizarConsultorio()
         {
             RuleFor(p => p.Nombre)
                 .NotEmpty().WithMessage("El campo {PropertyName} es requerido")
