@@ -35,6 +35,21 @@ namespace DientesLimpios.Infraestructura.Notificaciones
             await EnviarMensaje(cita.Paciente_Email, asunto, cuerpo);
         }
 
+        public async Task EnviarRecordatorioCita(RecordatorioCitaDTO cita)
+        {
+            var asunto = "Confirmacion de cita - Dientes Limpios";
+            var cuerpo = $"""
+                Estimado (a) {cita.Paciente}
+                Le recordamos que tiene cita con el Dr (Dra.) {cita.Dentista} ha sido programada por el {cita.Fecha.ToString("f", new CultureInfo("es-Gt"))} en el consultorio {cita.Consultorio}.
+
+                ¡Le esperamos!
+
+                Equipo de Dientes Limpios
+                """;
+
+            await EnviarMensaje(cita.Paciente_Email, asunto, cuerpo);
+        }
+
         private async Task EnviarMensaje(string emailDestinatario, string asunto, string cuerpo)
         {
             var nuestroEmail = configuration.GetValue<string>("CONFIGURACIONES_EMAIL:EMAIL");

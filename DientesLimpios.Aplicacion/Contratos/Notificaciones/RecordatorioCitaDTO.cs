@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace DientesLimpios.Aplicacion.Contratos.Notificaciones
 {
-    public interface IServicioNotificaciones
+    public class RecordatorioCitaDTO : DatosCorreoCitaDTO
     {
-        Task EnviarConfirmacionCita(ConfirmacionCitaDTO cita);
-        Task EnviarRecordatorioCita(RecordatorioCitaDTO cita);
     }
 }
