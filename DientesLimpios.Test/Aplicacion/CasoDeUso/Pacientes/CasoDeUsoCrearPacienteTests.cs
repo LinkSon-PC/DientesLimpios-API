@@ -32,7 +32,7 @@ namespace DientesLimpios.Test.Aplicacion.CasoDeUso.Pacientes
         }
 
         [TestMethod]
-        public async Task Handlle_CuandoDatosVlidos_CrearPacienteYPersisteYRetornaId()
+        public async Task Handlle_CuandoDatosValidos_CrearPacienteYPersisteYRetornaId()
         {
             var comando = new ComandoCrearPaciente { Nombre = "Paciente A", Email = "pacienteA@ejemplo.com" };
             var pacienteCreado = new Paciente(comando.Nombre, new Email(comando.Email));

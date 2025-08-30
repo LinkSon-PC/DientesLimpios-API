@@ -1,7 +1,8 @@
 ﻿using DientesLimpios.Aplicacion.Contratos.Persistencia;
 using DientesLimpios.Aplicacion.Contratos.Repositorios;
-using DientesLimpios.Aplicacion.Excepciones;
 using DientesLimpios.Aplicacion.Utilidades.Mediador;
+using DientesLimpios.Dominio.Entidades;
+using DientesLimpios.Dominio.ObjetosDeValor;
 using DientesLimpios.Persistencia.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -9,32 +10,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Comandos.BorrarConsultorio
+namespace DientesLimpios.Aplicacion.CasoDeUso.Dentistas.Comandos.CrearDentista
 {
-    public class CasoDeUsoBorrarConsultorio : IRequestHandler<ComandoBorrarConsultorio>
+    public class CasoDeUsoCrearDentista : IRequestHandler<ComandoCrearDentista, Guid>
     {
-        private readonly IRepositorioConsultorios repositorio;
+        private readonly IRepositorioDentistas repositorio;
         private readonly IUnidadDeTrabajo unidadDeTrabajo;
 
-        public CasoDeUsoBorrarConsultorio(IRepositorioConsultorios repositorio, IUnidadDeTrabajo unidadDeTrabajo)
+        public CasoDeUsoCrearDentista(IRepositorioDentistas repositorio, IUnidadDeTrabajo unidadDeTrabajo)
         {
             this.repositorio = repositorio;
             this.unidadDeTrabajo = unidadDeTrabajo;
         }
 
-        public async Task Handle(ComandoBorrarConsultorio request)
+        public async Task<Guid> Handle(ComandoCrearDentista request)
         {
-            var consultorio = await repositorio.ObtenerPorId(request.Id);
-
-            if (consultorio is null)
-            {
-                throw new ExcepcionNoEncontrado();
-            }
+            var email = new Email(request.Email);
+            var dentista = new Dentista(request.Nombre, email);
 
             try
             {
-                await repositorio.Borrar(consultorio);
+                var respuesta = await repositorio.Agregar(dentista);
                 await unidadDeTrabajo.Persistir();
+                return respuesta.Id;
             }
             catch (Exception ex)
             {

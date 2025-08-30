@@ -2,38 +2,36 @@
 using DientesLimpios.Aplicacion.Contratos.Repositorios;
 using DientesLimpios.Aplicacion.Excepciones;
 using DientesLimpios.Aplicacion.Utilidades.Mediador;
-using DientesLimpios.Persistencia.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Comandos.BorrarConsultorio
+namespace DientesLimpios.Aplicacion.CasoDeUso.Dentistas.Comandos.BorrarDentista
 {
-    public class CasoDeUsoBorrarConsultorio : IRequestHandler<ComandoBorrarConsultorio>
+    public class CasoDeUsoBorrarDentista : IRequestHandler<ComandoBorrarDentista>
     {
-        private readonly IRepositorioConsultorios repositorio;
+        private readonly IRepositorioDentistas repositorio;
         private readonly IUnidadDeTrabajo unidadDeTrabajo;
 
-        public CasoDeUsoBorrarConsultorio(IRepositorioConsultorios repositorio, IUnidadDeTrabajo unidadDeTrabajo)
+        public CasoDeUsoBorrarDentista(IRepositorioDentistas repositorio, IUnidadDeTrabajo unidadDeTrabajo)
         {
             this.repositorio = repositorio;
             this.unidadDeTrabajo = unidadDeTrabajo;
         }
 
-        public async Task Handle(ComandoBorrarConsultorio request)
+        public async Task Handle(ComandoBorrarDentista request)
         {
-            var consultorio = await repositorio.ObtenerPorId(request.Id);
-
-            if (consultorio is null)
+            var dentista = await repositorio.ObtenerPorId(request.Id);
+            if(dentista is null)
             {
                 throw new ExcepcionNoEncontrado();
             }
 
             try
             {
-                await repositorio.Borrar(consultorio);
+                await repositorio.Borrar(dentista);
                 await unidadDeTrabajo.Persistir();
             }
             catch (Exception ex)

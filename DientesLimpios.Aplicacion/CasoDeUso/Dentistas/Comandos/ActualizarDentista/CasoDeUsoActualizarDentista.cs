@@ -2,38 +2,41 @@
 using DientesLimpios.Aplicacion.Contratos.Repositorios;
 using DientesLimpios.Aplicacion.Excepciones;
 using DientesLimpios.Aplicacion.Utilidades.Mediador;
-using DientesLimpios.Persistencia.Repositorios;
+using DientesLimpios.Dominio.ObjetosDeValor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Comandos.BorrarConsultorio
+namespace DientesLimpios.Aplicacion.CasoDeUso.Dentistas.Comandos.ActualizarDentista
 {
-    public class CasoDeUsoBorrarConsultorio : IRequestHandler<ComandoBorrarConsultorio>
+    public class CasoDeUsoActualizarDentista : IRequestHandler<ComandoActualizarDentista>
     {
-        private readonly IRepositorioConsultorios repositorio;
+        private readonly IRepositorioDentistas repositorio;
         private readonly IUnidadDeTrabajo unidadDeTrabajo;
 
-        public CasoDeUsoBorrarConsultorio(IRepositorioConsultorios repositorio, IUnidadDeTrabajo unidadDeTrabajo)
+        public CasoDeUsoActualizarDentista(IRepositorioDentistas repositorio, IUnidadDeTrabajo unidadDeTrabajo)
         {
             this.repositorio = repositorio;
             this.unidadDeTrabajo = unidadDeTrabajo;
         }
 
-        public async Task Handle(ComandoBorrarConsultorio request)
+        public async Task Handle(ComandoActualizarDentista request)
         {
-            var consultorio = await repositorio.ObtenerPorId(request.Id);
-
-            if (consultorio is null)
+            var dentista = await repositorio.ObtenerPorId(request.Id);
+            if(dentista is null)
             {
                 throw new ExcepcionNoEncontrado();
             }
 
+            dentista.ActualizarNombre(request.Nombre);
+            var email = new Email(request.Email);
+            dentista.ActualizarEmail(email);
+
             try
             {
-                await repositorio.Borrar(consultorio);
+                await repositorio.Actualizar(dentista);
                 await unidadDeTrabajo.Persistir();
             }
             catch (Exception ex)
@@ -41,6 +44,7 @@ namespace DientesLimpios.Aplicacion.CasoDeUso.Consultorios.Comandos.BorrarConsul
                 await unidadDeTrabajo.Reversar();
                 throw;
             }
+
         }
     }
 }
