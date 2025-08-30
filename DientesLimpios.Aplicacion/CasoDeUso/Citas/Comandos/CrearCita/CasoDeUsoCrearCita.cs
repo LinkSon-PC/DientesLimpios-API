@@ -51,7 +51,7 @@ namespace DientesLimpios.Aplicacion.CasoDeUso.Citas.Comandos.CrearCita
 
             var citaDB = await repositorio.ObtenerPorId(id.Value);
             var notificacionDTO = citaDB!.ADto();
-            await servicioNotificaciones.EnviarConfirmacion(notificacionDTO);
+            await servicioNotificaciones.EnviarConfirmacionCita(notificacionDTO);
             return id.Value;
         }
     }

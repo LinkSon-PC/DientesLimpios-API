@@ -4,6 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aed098bc-5428-48f7-a6e5-01debd2ebcca</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DientesLimpios.Aplicacion\DientesLimpios.Aplicacion.csproj" />
+    <ProjectReference Include="..\DientesLimpios.Infraestructura\DientesLimpios.Infraestructura.csproj" />
     <ProjectReference Include="..\DientesLimpiosPersistencia\DientesLimpios.Persistencia.csproj" />
   </ItemGroup>
 

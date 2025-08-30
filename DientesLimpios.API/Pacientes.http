@@ -24,8 +24,8 @@ PUT {{DientesLimpios.API_HostAddress}}/0198f26e-792d-73ce-b064-00d75f139455
 Content-Type: application/json
 
 {
-  "nombre" : "Consultorio D - Actualizado",
-   "email": "pacienteDactualizado@ejemplo.com"
+  "nombre" : "A. Son Actualizado",
+   "email": "tonyfernandosonmux@gmail.com"
 }
 
 ###
