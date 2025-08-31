@@ -7,6 +7,7 @@ using DientesLimpios.Aplicacion.Utilidades.Mediador;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DientesLimpios.API.DTOs.Consultorios;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DientesLimpios.API.Controllers
 {
